@@ -37,8 +37,35 @@ $!!n!!=!(!((n!) !))$이다.
 $T$가 주어진다. 
 $(1\le T\le 1\, 000)$ 
 
-두 번째 줄부터 
-$T$개의 수식이 한 줄에 하나씩 주어진다. 하나의 수식은 
-$a$개의 느낌표, 정수 
-$n$, 
-$b$개의 느낌표가 공백 없이 순서대로 합쳐진 형태이다. 
+---
+
+## 소스코드
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        long N = sc.nextLong();
+        sc.nextLine();  // 개행 문자 처리
+
+        while (N-- > 0) {
+            String s = sc.nextLine();
+
+            int idx = 0;
+            while (s.charAt(idx) == '!') {
+                idx++;
+            }
+
+            boolean isLastZero = s.charAt(s.length() - 1) == '0';
+            boolean isEven = (idx % 2 == 0);
+
+            System.out.println((isEven == isLastZero) ? 0 : 1);
+        }
+
+        sc.close();
+    }
+}
+```
